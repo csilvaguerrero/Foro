@@ -1,10 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ForoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Preguntas">
+    <Key>
+      <PropertyRef Name="idPregunta" />
+    </Key>
+    <Property Name="idPregunta" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
   <EntityType Name="Usuarios">
     <Key>
       <PropertyRef Name="idUsuario" />
     </Key>
-    <Property Name="idUsuario" Type="Byte" Nullable="false" />
+    <Property Name="idUsuario" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="correo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
@@ -12,6 +20,7 @@
     <Property Name="contrasenia" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityContainer Name="ForoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Preguntas" EntityType="Self.Preguntas" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
   </EntityContainer>
 </Schema>

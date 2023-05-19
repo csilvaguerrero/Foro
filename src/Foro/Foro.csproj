@@ -150,6 +150,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Foro.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Preguntas.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Usuarios.cs">
       <DependentUpon>Foro.tt</DependentUpon>
     </Compile>

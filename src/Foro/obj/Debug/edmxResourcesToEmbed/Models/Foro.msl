@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ForoModelStoreContainer" CdmEntityContainer="ForoEntities">
+    <EntitySetMapping Name="Preguntas">
+      <EntityTypeMapping TypeName="ForoModel.Preguntas">
+        <MappingFragment StoreEntitySet="Preguntas">
+          <ScalarProperty Name="idPregunta" ColumnName="idPregunta" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="ForoModel.Usuarios">
         <MappingFragment StoreEntitySet="Usuarios">

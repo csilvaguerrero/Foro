@@ -1,8 +1,14 @@
 ﻿
-@{
-    ViewBag.Title = "Pantalla";
+@{ 
+
+    var preguntas = Model;
+
 }
 
 
-<h2>Pantalla</h2>
+<h2>PREGUNTAS RECIENTES</h2>
+@foreach(var datos in preguntas)
+{
+    @datos.titulo;
+}
 
