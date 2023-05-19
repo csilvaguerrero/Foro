@@ -15,10 +15,14 @@ namespace Foro.Controllers
             return View("InicioSesion");
         }        
 
+        public ActionResult IniciarSesion()
+        {
+            return View("InicioSesion");
+        }
+
         [HttpPost]
         public ActionResult IniciarSesion(string usuario, string contrasenia)
         {
-
             Usuarios usu = bd.Usuarios.FirstOrDefault(x => x.usuario == usuario);
 
             if (usu != null)
@@ -40,5 +44,10 @@ namespace Foro.Controllers
                 return View("InicioSesion");
             }             
         }
+
+        //public ActionResult Registro()
+        //{
+        //    return View("Registro");
+        //}
     }
 }

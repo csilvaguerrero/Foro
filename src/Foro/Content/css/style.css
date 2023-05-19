@@ -112,12 +112,13 @@ span.botonesDeSesion{
     font-size: 14px;
     color: #5a5a5a;    
     transition: 0.5s all ease;    
-    cursor: pointer;
+    cursor: pointer;        
 }
 
 
 span#inicioSesionMenu {
-    background-color: #c3c8f8
+    background-color: #c3c8f8;
+    text-decoration: none;
 }
 
     span#inicioSesionMenu:hover {
@@ -139,4 +140,14 @@ input#buscadorPrincipal {
     margin-left: 30px;
     width: 700px;
     height: 30px;
+}
+
+#iniSesion {
+    text-decoration: none;
+    color: black;
+}
+
+#regSesion {
+    text-decoration: none;
+    color: white;
 }

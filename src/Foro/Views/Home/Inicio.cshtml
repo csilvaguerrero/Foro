@@ -1,0 +1,35 @@
+﻿<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</head>
+<body>
+    <nav id="navegacionPrincipal">
+        <ul id="ulNavegacion">
+            <li>
+                ForoNombre
+            </li>
+            <li>
+                <div>
+                    <input type="text" id="buscadorPrincipal" placeholder="Buscar..." />
+                </div>
+            </li>
+        </ul>
+        <div id="cajaBotonesSesion">
+            <span class="botonesDeSesion" id="inicioSesionMenu"><a href="@Url.Action("IniciarSesion", "Login")" id="iniSesion">Iniciar sesión</a></span>            
+            <span class="botonesDeSesion" id="registrarSesionMenu"><a href="@Url.Action("Registro", "Login")" id="regSesion">Registrarse</a></span>
+            @*<span class="spans material-symbols-outlined">logout</span>*@
+        </div>
+    </nav>
+    <div id="separadorNav"></div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+
+@Styles.Render("~/Content/css/style.css")
+</html>
