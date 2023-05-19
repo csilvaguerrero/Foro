@@ -1,0 +1,142 @@
+﻿body, html{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+}
+
+div#contenedorInicioSesion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+div#divInicioSesion {
+    background-color: #c3c8f8;
+    width: 600px;
+    height: 600px;
+}
+
+
+h2#tituloInicioSesion{
+    text-align: center;
+}
+
+div.inputFormularios{    
+    width: 400px;
+    margin: auto;
+}
+
+input.inputFormularioSesion{
+    height: 40px;
+    width: 350px;
+    border: none;
+    border-radius: 5px;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    padding-left: 15px;
+    font-size: 16px;    
+    color: gray;
+}
+
+label.labelFormularioSesion{    
+    margin-left: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+form#formularioInicioSesion {
+    margin-top: 60px;
+}
+
+input#botonInicioSesion{
+    display: block;
+    width: 330px;
+    height: 45px;
+    margin: auto;
+    font-weight: bold;    
+    margin-top: 40px;
+    border: none;
+    border-radius: 50px;
+}
+
+p.textoFormularioSesion{
+    margin-top: 40px;
+    margin-left: 130px;    
+}
+
+nav#navegacionPrincipal {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+div#separadorNav{
+    width: 100%;
+    height: 50px;
+    background-color: #2c2a2a;
+}
+
+ul#ulNavegacion{
+    width: 100%;    
+}
+
+ul#ulNavegacion > li{
+    display: inline-block;
+}
+
+div#cajaBotonesSesion {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+}
+
+span.botonesDeSesion{    
+    border-radius: 5px;
+    height: 40px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    font-size: 14px;
+    color: #5a5a5a;    
+    transition: 0.5s all ease;    
+    cursor: pointer;
+}
+
+
+span#inicioSesionMenu {
+    background-color: #c3c8f8
+}
+
+    span#inicioSesionMenu:hover {
+        background-color: #9da6fb
+    }
+
+span#registrarSesionMenu {
+    background-color: #8591fe;
+    color: white;
+}
+
+    span#registrarSesionMenu:hover {
+        background-color: #6574fc;
+    }
+
+input#buscadorPrincipal {    
+    border-color: var(--theme-topbar-search-border);
+    border-radius: 2px;
+    margin-left: 30px;
+    width: 700px;
+    height: 30px;
+}
