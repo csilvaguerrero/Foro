@@ -12,24 +12,15 @@ namespace Foro.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Preguntas
+    public partial class Comentarios
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Preguntas()
-        {
-            this.Comentarios = new HashSet<Comentarios>();
-        }
-    
-        public short idPregunta { get; set; }
-        public string titulo { get; set; }
+        public short idComentario { get; set; }
         public string descripcion { get; set; }
         public System.DateTime fechaPublicacion { get; set; }
-        public byte idCategoria { get; set; }
         public byte idUsuario { get; set; }
+        public short idPregunta { get; set; }
     
-        public virtual Categorias Categorias { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comentarios> Comentarios { get; set; }
+        public virtual Preguntas Preguntas { get; set; }
         public virtual Usuarios Usuarios { get; set; }
     }
 }

@@ -1,0 +1,25 @@
+﻿@using Foro.Controllers;
+
+<div id="divCategorias">
+    <div id="todasCategorias">
+        <h2>Categorías</h2>
+        <br />
+        @foreach (var datosC in new CategoriaController().ListarCategorías())
+        {
+            <a href="@Url.Action("VerCategoria", "Categoria", new {idCategoria = datosC.idCategoria, categoria = datosC.nombre})" id="enlaceCategorias">
+                <div class="filaCategoria">
+                    <img src="~/Content/img/@(datosC.imagen).svg" />
+                    <div class="datosCategorias">
+                        <span class="tituloCategoria">@datosC.nombre</span>
+                        <br />
+                        <span>@datosC.descripcion</span>
+                    </div>
+                    <div id="contadorPreguntas">
+                        @(new PreguntasController().ContarPreguntas(datosC.idCategoria)) preguntas
+                    </div>
+                </div>
+            </a>
+            <hr />
+        }
+    </div>
+</div>

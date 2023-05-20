@@ -32,7 +32,7 @@ namespace Foro.Controllers
                     Session.Add("usuario", usu);
                     usu = null;
 
-                    return View("Pantalla");
+                    return View("~/Views/Home/VistaInicio.cshtml");
                 }
                 else
                 {
@@ -44,10 +44,12 @@ namespace Foro.Controllers
                 return View("InicioSesion");
             }             
         }
+        
+        public ActionResult CerrarSesion()
+        {            
+            Session["usuario"] = null;            
 
-        //public ActionResult Registro()
-        //{
-        //    return View("Registro");
-        //}
+            return View("~/Views/Home/VistaInicio.cshtml");
+        }
     }
 }

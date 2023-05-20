@@ -130,10 +130,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Content Include="Content\css\style.css" />
+    <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\ComentarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PreguntasController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Categorias.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comentarios.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Foro.Context.cs">
       <AutoGen>True</AutoGen>
@@ -175,6 +185,17 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\img\deporte.svg" />
+    <Content Include="Content\img\electronica.svg" />
+    <Content Include="Content\img\empleo.svg" />
+    <Content Include="Content\img\general.svg" />
+    <Content Include="Content\img\informatica.svg" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\mecanica.svg" />
+    <Content Include="Content\img\mensaje.svg" />
+    <Content Include="Content\img\musica.svg" />
+    <Content Include="Content\img\pelicula.svg" />
+    <Content Include="Content\img\videojuegos.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -224,11 +245,15 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Login\InicioSesion.cshtml" />
-    <Content Include="Views\Home\Inicio.cshtml" />
-    <Content Include="Views\Home\Pantalla.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Home\VistaInicio.cshtml" />
+    <Content Include="Views\Categoria\VerCategoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Comentario\" />
+    <Folder Include="Views\Preguntas\" />
+    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -5,6 +5,25 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="ForoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="imagen" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comentarios">
+          <Key>
+            <PropertyRef Name="idComentario" />
+          </Key>
+          <Property Name="idComentario" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="fechaPublicacion" Type="datetime" Nullable="false" />
+          <Property Name="idUsuario" Type="tinyint" Nullable="false" />
+          <Property Name="idPregunta" Type="smallint" Nullable="false" />
+        </EntityType>
         <EntityType Name="Preguntas">
           <Key>
             <PropertyRef Name="idPregunta" />
@@ -12,6 +31,9 @@
           <Property Name="idPregunta" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="titulo" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="fechaPublicacion" Type="datetime" Nullable="false" />
+          <Property Name="idCategoria" Type="tinyint" Nullable="false" />
+          <Property Name="idUsuario" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -24,15 +46,103 @@
           <Property Name="usuario" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="contrasenia" Type="varchar" MaxLength="256" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Comentari__idPre__1A14E395">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="idPregunta" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="idPregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__idUsu__1920BF5C">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preguntas__idCat__15502E78">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Preguntas">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preguntas__idUsu__164452B1">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Preguntas">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ForoModelStoreContainer">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comentarios" EntityType="Self.Comentarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Comentari__idPre__1A14E395" Association="Self.FK__Comentari__idPre__1A14E395">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__idUsu__1920BF5C" Association="Self.FK__Comentari__idUsu__1920BF5C">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preguntas__idCat__15502E78" Association="Self.FK__Preguntas__idCat__15502E78">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Preguntas" EntitySet="Preguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preguntas__idUsu__164452B1" Association="Self.FK__Preguntas__idUsu__164452B1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Preguntas" EntitySet="Preguntas" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ForoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Preguntas" Relationship="Self.FK__Preguntas__idCat__15502E78" FromRole="Categorias" ToRole="Preguntas" />
+        </EntityType>
+        <EntityType Name="Comentarios">
+          <Key>
+            <PropertyRef Name="idComentario" />
+          </Key>
+          <Property Name="idComentario" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaPublicacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="idUsuario" Type="Byte" Nullable="false" />
+          <Property Name="idPregunta" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Preguntas" Relationship="Self.FK__Comentari__idPre__1A14E395" FromRole="Comentarios" ToRole="Preguntas" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Comentari__idUsu__1920BF5C" FromRole="Comentarios" ToRole="Usuarios" />
+        </EntityType>
         <EntityType Name="Preguntas">
           <Key>
             <PropertyRef Name="idPregunta" />
@@ -40,6 +150,12 @@
           <Property Name="idPregunta" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaPublicacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="idCategoria" Type="Byte" Nullable="false" />
+          <Property Name="idUsuario" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Categorias" Relationship="Self.FK__Preguntas__idCat__15502E78" FromRole="Preguntas" ToRole="Categorias" />
+          <NavigationProperty Name="Comentarios" Relationship="Self.FK__Comentari__idPre__1A14E395" FromRole="Preguntas" ToRole="Comentarios" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Preguntas__idUsu__164452B1" FromRole="Preguntas" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -51,10 +167,78 @@
           <Property Name="correo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="contrasenia" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Comentarios" Relationship="Self.FK__Comentari__idUsu__1920BF5C" FromRole="Usuarios" ToRole="Comentarios" />
+          <NavigationProperty Name="Preguntas" Relationship="Self.FK__Preguntas__idUsu__164452B1" FromRole="Usuarios" ToRole="Preguntas" />
         </EntityType>
+        <Association Name="FK__Preguntas__idCat__15502E78">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Preguntas">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__idPre__1A14E395">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="idPregunta" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="idPregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__idUsu__1920BF5C">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preguntas__idUsu__164452B1">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Preguntas">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ForoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+          <EntitySet Name="Comentarios" EntityType="Self.Comentarios" />
           <EntitySet Name="Preguntas" EntityType="Self.Preguntas" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK__Preguntas__idCat__15502E78" Association="Self.FK__Preguntas__idCat__15502E78">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Preguntas" EntitySet="Preguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__idPre__1A14E395" Association="Self.FK__Comentari__idPre__1A14E395">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__idUsu__1920BF5C" Association="Self.FK__Comentari__idUsu__1920BF5C">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preguntas__idUsu__164452B1" Association="Self.FK__Preguntas__idUsu__164452B1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Preguntas" EntitySet="Preguntas" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -62,12 +246,36 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ForoModelStoreContainer" CdmEntityContainer="ForoEntities">
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="ForoModel.Categorias">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comentarios">
+            <EntityTypeMapping TypeName="ForoModel.Comentarios">
+              <MappingFragment StoreEntitySet="Comentarios">
+                <ScalarProperty Name="idComentario" ColumnName="idComentario" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fechaPublicacion" ColumnName="fechaPublicacion" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idPregunta" ColumnName="idPregunta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Preguntas">
             <EntityTypeMapping TypeName="ForoModel.Preguntas">
               <MappingFragment StoreEntitySet="Preguntas">
                 <ScalarProperty Name="idPregunta" ColumnName="idPregunta" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fechaPublicacion" ColumnName="fechaPublicacion" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

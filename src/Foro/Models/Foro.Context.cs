@@ -25,6 +25,8 @@ namespace Foro.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Categorias> Categorias { get; set; }
+        public virtual DbSet<Comentarios> Comentarios { get; set; }
         public virtual DbSet<Preguntas> Preguntas { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
     }

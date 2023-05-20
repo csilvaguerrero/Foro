@@ -7,12 +7,19 @@ using System.Web.Mvc;
 
 namespace Foro.Controllers
 {
-    public class HomeController : Controller
-    {
+    public class UsuarioController : Controller
+    {        
         ForoEntities db = new ForoEntities();
         public ActionResult Index()
         {
-            return View("VistaInicio");
-        }        
+            return View();
+        }
+
+        public List<Usuarios> ListarUsuarios()
+        {
+            List<Usuarios> usuario = db.Usuarios.ToList();
+
+            return usuario;
+        }
     }
 }

@@ -1,0 +1,47 @@
+﻿@using Foro.Models;
+@using Foro.Controllers;
+
+@{
+
+    Tuple<List<Preguntas>, string> datos = Model;
+
+    List<Preguntas> pregunta = datos.Item1;
+    string nombreCategoria = datos.Item2;
+    string simbolo = "@";
+
+}
+
+<div id="divVerCategoria">
+    <div id="tituloCat">
+        <span>@nombreCategoria.ToUpper()</span>
+    </div>
+    <div id="encabezadoVerCategorias">
+        <span>HILOS</span>
+    </div>
+    <div id="contenedorCategoria">
+        @foreach (var hilos in pregunta)
+        {
+            <div class="filasPreguntas">
+                <img src="~/Content/img/mensaje.svg" />
+                <div id="contenidoHilo">
+                    <span>@hilos.titulo</span>
+                    <br />
+                    <span id="usuarioHilo">
+                        @simbolo@hilos.Usuarios.usuario - Publicado el @hilos.fechaPublicacion.ToString("yyyy/MM/dd")
+                    </span>
+                </div>
+                <div id="numeroComentarios">
+                    @if (hilos.Comentarios.Count > 0)
+                    {
+                        @hilos.Comentarios.Count <span>respuestas</span>
+                    }
+else
+                {
+                    <span>No hay respuestas</span>
+                }
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
