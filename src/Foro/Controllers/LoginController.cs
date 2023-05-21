@@ -44,6 +44,11 @@ namespace Foro.Controllers
                 return View("InicioSesion");
             }             
         }
+
+        public ActionResult Registro()
+        {
+            return View();
+        }
         
         public ActionResult CerrarSesion()
         {            
