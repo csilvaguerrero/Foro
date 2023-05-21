@@ -6,23 +6,29 @@ body{
     margin: 0;
     padding: 0;
     font-family: Roboto;
-    /*background-color: #e9e9e9;*/
+    
 }
 
-div#contenedorInicioSesion {
+div.contenedorSesion {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
     background-color: #ededed;
 }
 
-div#divInicioSesion {
-    /*background-color: #c3c8f8;*/
+div#divInicioSesion {    
     background-color: white;
     width: 700px;
     height: 700px;
     border-radius:10px;
+}
+
+div#divRegistroSesion {
+    background-color: white;
+    width: 900px;
+    height: 750px;
+    border-radius: 10px;
 }
 
 
@@ -67,6 +73,35 @@ label.labelFormularioSesion{
 
 form#formularioInicioSesion {
     margin-top: 60px;
+}
+
+form#formularioRegistroSesion{
+    margin-top: 40px;
+}
+
+div.registroSesion{
+    width: 800px;
+}
+
+input.inputRegistro {
+    width: 755px;
+}
+
+div#divNombreApellidos{
+    display: flex;    
+}
+
+input.nombreApellidos{
+    width: 300px;
+    display: inline;
+}
+
+label#nombrePersona{
+    margin-left: 75px;
+}
+
+label#apellidosPersona{
+    margin-left: 390px;
 }
 
 input#botonInicioSesion {

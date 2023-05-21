@@ -1,21 +1,35 @@
-﻿<div id="contenedorInicioSesion">
-    <div id="divInicioSesion">
+﻿<div class="contenedorSesion">
+    <div id="divRegistroSesion">
         <div id="tituloInicioSesion">Registro</div>
-        @using (Html.BeginForm("Registro", "Login", FormMethod.Post, htmlAttributes: new { id = "formularioInicioSesion" }))
+        @using (Html.BeginForm("Registro", "Login", FormMethod.Post, htmlAttributes: new { id = "formularioRegistroSesion" }))
         {
-            <div class="inputFormularios">
-                <label class="labelFormularioSesion">Usuario</label>
-                <input type="text" class="inputFormularioSesion" name="usuario" />
+
+            <label class="labelFormularioSesion" id="nombrePersona">Nombre</label>
+            <label class="labelFormularioSesion" id="apellidosPersona">Apellidos</label>
+            <br />
+            <div id="divNombreApellidos">
+                <input type="text" name="nombrePersona" class="inputFormularioSesion nombreApellidos" />
+                <input type="text" name="apellidosPersona" class="inputFormularioSesion nombreApellidos" />
             </div>
             <br /><br /><br />
-            <div class="inputFormularios">
+            <div class="inputFormularios registroSesion">
+                <label class="labelFormularioSesion">Correo</label>
+                <input type="text" class="inputFormularioSesion inputRegistro" name="correo" />
+            </div>
+            <br /><br /><br />
+            <div class="inputFormularios registroSesion">
+                <label class="labelFormularioSesion">Usuario</label>
+                <input type="text" class="inputFormularioSesion inputRegistro" name="usuario" />
+            </div>
+            <br /><br /><br />
+            <div class="inputFormularios registroSesion">
                 <label class="labelFormularioSesion">Contraseña</label>
-                <input type="password" class="inputFormularioSesion" name="contrasenia" />
+                <input type="password" class="inputFormularioSesion inputRegistro" name="contrasenia" />
             </div>
             <input type="submit" value="Registrarse" id="botonInicioSesion" />
             <p class="textoFormularioSesion">
-                ¿Tienes una cuenta? Inicia sesión
-            </p>            
+                <a href="@Url.Action("IniciarSesion", "Login")">¿Tienes una cuenta? Inicia sesión</a>                    
+            </p>
         }
     </div>
 </div>

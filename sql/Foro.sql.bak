@@ -9,7 +9,6 @@ CREATE TABLE Usuarios(
 	apellidos VARCHAR(200) NOT NULL,
 	correo VARCHAR(200) NOT NULL UNIQUE,
 	usuario VARCHAR(30) NOT NULL UNIQUE,
-	fechaRegistro GETDATE() NOT NULL,
 	contrasenia VARCHAR(256) NOT NULL
 
 );

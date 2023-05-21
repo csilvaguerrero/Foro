@@ -1,8 +1,8 @@
-﻿<div id="contenedorInicioSesion">
+﻿<div class="contenedorSesion">
     <div id="divInicioSesion">
         <div id="tituloInicioSesion">Inicio de sesión</div>
         @using (Html.BeginForm("IniciarSesion", "Login", FormMethod.Post, htmlAttributes: new { id = "formularioInicioSesion" }))
-        {
+        {            
             <div class="inputFormularios">
                 <label class="labelFormularioSesion">Usuario</label>
                 <input type="text" class="inputFormularioSesion" name="usuario" />

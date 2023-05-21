@@ -49,6 +49,23 @@ namespace Foro.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Registro(string nombrePersona, string apellidosPersona, string correo, string usuario, string contrasenia)
+        {
+            Usuarios user = new Usuarios();
+
+            user.nombre = nombrePersona;
+            user.apellidos = apellidosPersona;
+            user.correo = correo;
+            user.usuario = usuario;
+            user.contrasenia = contrasenia;
+
+            bd.Usuarios.Add(user);
+            bd.SaveChanges();
+
+            return View("~/Views/Home/VistaInicio.cshtml");
+        }
         
         public ActionResult CerrarSesion()
         {            
