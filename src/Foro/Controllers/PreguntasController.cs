@@ -28,5 +28,10 @@ namespace Foro.Controllers
 
             return preguntas;
         }
+
+        public ActionResult VerPregunta()
+        {
+            return View();
+        }
     }
 }

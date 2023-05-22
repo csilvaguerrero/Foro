@@ -9,7 +9,7 @@ CREATE TABLE Usuarios(
 	apellidos VARCHAR(200) NOT NULL,
 	correo VARCHAR(200) NOT NULL UNIQUE,
 	usuario VARCHAR(30) NOT NULL UNIQUE,
-	fechaRegistro GETDATE() NOT NULL,
+	fechaRegistro DATETIME NOT NULL,
 	contrasenia VARCHAR(256) NOT NULL
 
 );
@@ -44,8 +44,8 @@ CREATE TABLE Comentarios(
 	
 );
 
-INSERT INTO Usuarios(nombre, apellidos, correo, usuario, contrasenia)
-VALUES('Cristian', 'Silva Guerrero', 'cristiansg84@gmail.com', 'admin', 'admin');
+INSERT INTO Usuarios(nombre, apellidos, correo, usuario, fechaRegistro, contrasenia)
+VALUES('Cristian', 'Silva Guerrero', 'cristiansg84@gmail.com', 'admin', GETDATE(),'admin');
 
 INSERT INTO Categorias(nombre, descripcion, imagen)
 VALUES('General', 'Temas que abarcan la actualidad', 'general'),

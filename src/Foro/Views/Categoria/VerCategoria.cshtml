@@ -2,11 +2,11 @@
 @using Foro.Controllers;
 
 @{
-
     Tuple<List<Preguntas>, string> datos = Model;
 
     List<Preguntas> pregunta = datos.Item1;
     string nombreCategoria = datos.Item2;
+
     string simbolo = "@";
 
 }
@@ -23,8 +23,8 @@
         {
             <div class="filasPreguntas">
                 <img src="~/Content/img/mensaje.svg" />
-                <div id="contenidoHilo">
-                    <span>@hilos.titulo</span>
+                <div id="contenidoHilo"> 
+                    <a href="@Url.Action("VerPregunta", "Preguntas", new {idPregunta = hilos.idPregunta})" class="enlacePregunta">@hilos.titulo</a>                   
                     <br />
                     <span id="usuarioHilo">
                         @simbolo@hilos.Usuarios.usuario - Publicado el @hilos.fechaPublicacion.ToString("yyyy/MM/dd")

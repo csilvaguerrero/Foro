@@ -222,6 +222,7 @@
     <Content Include="Models\Foro.edmx.diagram">
       <DependentUpon>Foro.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\img\noimg.avif" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -249,11 +250,11 @@
     <Content Include="Views\Home\VistaInicio.cshtml" />
     <Content Include="Views\Categoria\VerCategoria.cshtml" />
     <Content Include="Views\Login\Registro.cshtml" />
+    <Content Include="Views\Preguntas\VerPregunta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Comentario\" />
-    <Folder Include="Views\Preguntas\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>

@@ -294,7 +294,7 @@ a#enlaceCategorias {
 div#divVerCategoria {
     background-color: #ededed;
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -344,13 +344,10 @@ div.filasPreguntas{
     border-bottom: 1px solid gray;
     margin-bottom: 25px;    
     transition: 0.5s all ease;
-    cursor: pointer;
+    
 }
 
-    div.filasPreguntas:hover {
-        background-color: #dfe2ff;
-        border-radius: 5px;
-    }
+    
 
 img#imagenHilo{
     border-right: 1px solid gray;    
@@ -372,4 +369,52 @@ div#numeroComentarios{
 
 span#iconoPerfil{
     margin-left: 40px;
+}
+
+a.enlacePregunta{
+    text-decoration: none;
+    color: inherit;
+}
+
+span.simbolObl{
+    color: red;
+}
+
+div#divVerPregunta {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    background-color: #ededed;
+}
+
+div#contenedorPreguntas{
+    width: 1400px;
+    height: 800px;
+    background-color: white;
+    margin-left: 50px;
+    border-radius: 10px;
+}
+
+div.otrasCategorias{
+    border-radius: 10px;
+    width: 400px;
+    height: 400px;
+    background-color: white;
+}
+
+div#tituloPregunta {
+    height: 40px;
+    border-bottom: 10px solid #c3c8f8;
+    font-weight: bold;
+    font-size: 27px;
+    padding: 20px 20px 5px 20px;
+    
+}
+
+div.respuestasPregunta{
+    width: 100%;
+    height: 200px;
+    margin-top: 10px;
+    background-color: gray;
 }

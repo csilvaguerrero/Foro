@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2792ed5048334562a78973b83584f52a" Name="Diagram1">
+      <Diagram DiagramId="f034688ae7fb4d24934b5a97c028a921" Name="Diagram1">
         <EntityTypeShape EntityType="ForoModel.Categorias" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ForoModel.Comentarios" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ForoModel.Preguntas" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForoModel.Usuarios" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <AssociationConnector Association="ForoModel.FK__Preguntas__idCat__15502E78" ManuallyRouted="false" />
-        <AssociationConnector Association="ForoModel.FK__Comentari__idPre__1A14E395" ManuallyRouted="false" />
-        <AssociationConnector Association="ForoModel.FK__Comentari__idUsu__1920BF5C" ManuallyRouted="false" />
-        <AssociationConnector Association="ForoModel.FK__Preguntas__idUsu__164452B1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ForoModel.Usuarios" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="ForoModel.FK__Preguntas__idCat__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoModel.FK__Comentari__idPre__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoModel.FK__Comentari__idUsu__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoModel.FK__Preguntas__idUsu__173876EA" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

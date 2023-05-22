@@ -42,6 +42,7 @@
           <ScalarProperty Name="apellidos" ColumnName="apellidos" />
           <ScalarProperty Name="correo" ColumnName="correo" />
           <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
           <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
         </MappingFragment>
       </EntityTypeMapping>
