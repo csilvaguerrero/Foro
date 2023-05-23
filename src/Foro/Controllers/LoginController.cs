@@ -27,7 +27,7 @@ namespace Foro.Controllers
 
             if (usu != null)
             {
-                if (usu.contrasenia == contrasenia)
+                if (Desencriptar(usu.contrasenia) == contrasenia)
                 {
                     Session.Add("usuario", usu);
                     usu = null;
@@ -59,12 +59,13 @@ namespace Foro.Controllers
             user.apellidos = apellidosPersona;
             user.correo = correo;
             user.usuario = usuario;
-            user.contrasenia = contrasenia;
+            user.fechaRegistro = DateTime.Now;
+            user.contrasenia = Encriptar(contrasenia);
 
             bd.Usuarios.Add(user);
             bd.SaveChanges();
 
-            return View("~/Views/Home/VistaInicio.cshtml");
+            return IniciarSesion(user.usuario, contrasenia);
         }
         
         public ActionResult CerrarSesion()
@@ -72,6 +73,29 @@ namespace Foro.Controllers
             Session["usuario"] = null;            
 
             return View("~/Views/Home/VistaInicio.cshtml");
+        }
+
+        public string Encriptar(string mensaje)
+        {
+            string result = string.Empty;
+
+            byte[] encrypted = System.Text.Encoding.Unicode.GetBytes(mensaje);
+
+            result = Convert.ToBase64String(encrypted);
+
+            return result;
+        }
+
+        public string Desencriptar(string contrasenna)
+        {
+            string result = string.Empty;
+
+            byte[] decrypted = Convert.FromBase64String(contrasenna);
+
+            result = System.Text.Encoding.Unicode.GetString(decrypted);
+
+            return result;
+
         }
     }
 }

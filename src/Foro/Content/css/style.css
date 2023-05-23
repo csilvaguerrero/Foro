@@ -1,12 +1,15 @@
-﻿body, html{
-    height: 100%;
+﻿html {
+    /*height: 100%;*/
+    min-height: 100%;
+    position: relative;
 }
 
-body{
+body {
     margin: 0;
+    margin-bottom: 40px;
     padding: 0;
     font-family: Roboto;
-    
+    background-color: #ededed;
 }
 
 div.contenedorSesion {
@@ -134,6 +137,7 @@ nav#navegacionPrincipal {
     display: flex;
     justify-content: center;
     align-items: center;    
+    background-color: white;
 }
 
 div#separadorNav{
@@ -235,7 +239,7 @@ div#divCategorias {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
     
 }
 
@@ -277,7 +281,9 @@ footer {
     height: 60px;
     background-color: #2c2a2a;
     color: white;
-   
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 div#contadorPreguntas{
@@ -294,7 +300,8 @@ a#enlaceCategorias {
 div#divVerCategoria {
     background-color: #ededed;
     width: 100%;
-    height: 90vh;
+    padding: 40px 0px;
+    /*height: 90vh;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -303,7 +310,7 @@ div#divVerCategoria {
 
 div#contenedorCategoria {
     width: 1300px;
-    height: 500px;
+    /*height: 500px;*/
     background-color: white;
     border-radius: 20px;
     padding: 50px;
@@ -384,15 +391,16 @@ div#divVerPregunta {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 100vh;
+    /*height: 100vh;*/
+    padding: 40px 0px;
     background-color: #ededed;
 }
 
-div#contenedorPreguntas{
+div#contenedorPreguntas {
     width: 1400px;
-    height: 800px;
-    background-color: white;
-    margin-left: 50px;
+    /*height: 800px;*/
+    /*background-color: white;*/
+    background-color: #ededed;
     border-radius: 10px;
 }
 
@@ -416,5 +424,131 @@ div.respuestasPregunta{
     width: 100%;
     height: 200px;
     margin-top: 10px;
-    background-color: gray;
+    background-color: white;
+    /*border-bottom: 5px solid blue;*/
 }
+
+a#botonAñadirPregunta {
+    background-color: #62b429;
+    width: 40px;
+    height: 40px;
+    float: right;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: 0.5s all ease;
+    /*box-shadow: 0px 0px 6px 0px #ededed;*/
+}
+
+a#botonAñadirPregunta:hover{
+    background-color: #72dc28;
+}
+
+
+div#divAnadirPregunta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #ededed;
+    flex-direction: column;
+}
+
+div#tituloAnadirPregunta {
+    background-color: #8591fe;
+    width: 1400px;
+    height: 70px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+form#formAnadirPregunta {
+    width: 1400px;
+    height: 800px;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+div#datosRespuesta{
+    width: 100%;
+    height: 200px;
+    padding: 20px 40px 0px 40px;        
+    display: flex;
+}
+
+div#datosRespuesta > div{    
+    width: 400px;
+    height: 150px;
+}
+
+label.labelRespuestas{
+    font-size: 25px;
+    font-weight: bold;
+    font-weight: bold;
+}
+
+input#inputTituloRespuesta {
+    width: 500px;
+    height: 35px;
+    padding-left: 15px;
+    font-size: 20px;
+    border-color: var(--theme-topbar-search-border);
+    border: 2px solid #e4e4e4;
+    border-radius: 5px;
+}
+
+div#selectCategoriasRespuestas{
+    margin-left: 350px;
+}
+
+select#selectCategoriasRespuestas {
+    height: 35px;
+    font-size: 20px;
+    width: 500px;
+    border-color: var(--theme-topbar-search-border);
+    border: 2px solid #e4e4e4;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+div#divTextRespuesta{
+    padding: 0px 40px;
+}
+
+textarea#textoRespuesta {
+    width: 1320px;
+    height: 300px;
+    border-color: var(--theme-topbar-search-border);
+    border: 2px solid #e4e4e4;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+input#crearRespuesta {
+    margin: 0px 40px;
+    width: 300px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    height: 50px;
+    border: none;
+    background-color: #c3c8f8;
+    transition: 0.5s all ease;
+    color: white;
+    border-radius: 10px;
+}
+
+    input#crearRespuesta:hover {
+        background-color: #9da6fb;
+    }

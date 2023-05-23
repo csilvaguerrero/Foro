@@ -13,7 +13,11 @@
 
 <div id="divVerCategoria">
     <div id="tituloCat">
-        <span>@nombreCategoria.ToUpper()</span>
+        <span>@nombreCategoria.ToUpper()</span><a href="@Url.Action("AñadirPregunta", "Preguntas", new {nombreCategoria = nombreCategoria})" id="botonAñadirPregunta">
+            <span class="material-symbols-outlined">
+                add
+            </span>
+        </a>
     </div>
     <div id="encabezadoVerCategorias">
         <span>HILOS</span>
@@ -23,8 +27,8 @@
         {
             <div class="filasPreguntas">
                 <img src="~/Content/img/mensaje.svg" />
-                <div id="contenidoHilo"> 
-                    <a href="@Url.Action("VerPregunta", "Preguntas", new {idPregunta = hilos.idPregunta})" class="enlacePregunta">@hilos.titulo</a>                   
+                <div id="contenidoHilo">
+                    <a href="@Url.Action("VerPregunta", "Preguntas", new {idPregunta = hilos.idPregunta})" class="enlacePregunta">@hilos.titulo</a>
                     <br />
                     <span id="usuarioHilo">
                         @simbolo@hilos.Usuarios.usuario - Publicado el @hilos.fechaPublicacion.ToString("yyyy/MM/dd")

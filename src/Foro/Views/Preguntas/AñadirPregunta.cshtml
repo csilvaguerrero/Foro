@@ -1,0 +1,40 @@
+﻿@using Foro.Controllers  
+@using Foro.Models
+
+@{
+    ViewBag.Title = "AñadirPregunta";    
+}
+
+<div id="divAnadirPregunta">
+    <div id="tituloAnadirPregunta">AÑADIR PREGUNTA</div>
+    @using (Html.BeginForm("AñadirPregunta", "Preguntas", FormMethod.Post, htmlAttributes: new { id = "formAnadirPregunta" }))
+    {        
+        <div id="datosRespuesta">
+            <div>
+                <label class="labelRespuestas">Título</label>
+                <br /><br />
+                <input type="text" name="titulo" id="inputTituloRespuesta"/>
+            </div>
+            <div id="selectCategoriasRespuestas">
+                <label class="labelRespuestas">Selecciona una categoría</label>
+                <br /><br />
+                <select id="selectCategoriasRespuestas" name="idCategoria">
+                    @foreach (var categorias in new CategoriaController().ListarCategorías())
+                    {
+                        <option value="@categorias.idCategoria">@categorias.nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+        
+        <div id="divTextRespuesta">
+            <label class="labelRespuestas">Comentario</label>
+            <br /><br />
+            <textarea id="textoRespuesta" name="descripcion"></textarea>
+        </div>
+        <br /><br /><br /><br /><br />
+        <input type="submit" value="CREAR RESPUESTA" id="crearRespuesta" onclick="history.back()"/>
+    }
+</div>
+
+

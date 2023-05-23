@@ -26,8 +26,8 @@ namespace Foro.Models
         public string apellidos { get; set; }
         public string correo { get; set; }
         public string usuario { get; set; }
-        public System.DateTime fechaRegistro { get; set; }
         public string contrasenia { get; set; }
+        public System.DateTime fechaRegistro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comentarios> Comentarios { get; set; }

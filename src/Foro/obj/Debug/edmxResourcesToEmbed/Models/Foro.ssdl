@@ -39,10 +39,10 @@
     <Property Name="apellidos" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="correo" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="usuario" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
     <Property Name="contrasenia" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Comentari__idPre__1B0907CE">
+  <Association Name="FK__Comentari__idPre__4222D4EF">
     <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
     <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
     <ReferentialConstraint>
@@ -54,7 +54,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Comentari__idUsu__1A14E395">
+  <Association Name="FK__Comentari__idUsu__412EB0B6">
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
     <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
     <ReferentialConstraint>
@@ -66,7 +66,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Preguntas__idCat__164452B1">
+  <Association Name="FK__Preguntas__idCat__3D5E1FD2">
     <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
     <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -78,7 +78,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Preguntas__idUsu__173876EA">
+  <Association Name="FK__Preguntas__idUsu__3E52440B">
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
     <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -95,19 +95,19 @@
     <EntitySet Name="Comentarios" EntityType="Self.Comentarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Comentari__idPre__1B0907CE" Association="Self.FK__Comentari__idPre__1B0907CE">
+    <AssociationSet Name="FK__Comentari__idPre__4222D4EF" Association="Self.FK__Comentari__idPre__4222D4EF">
       <End Role="Preguntas" EntitySet="Preguntas" />
       <End Role="Comentarios" EntitySet="Comentarios" />
     </AssociationSet>
-    <AssociationSet Name="FK__Comentari__idUsu__1A14E395" Association="Self.FK__Comentari__idUsu__1A14E395">
+    <AssociationSet Name="FK__Comentari__idUsu__412EB0B6" Association="Self.FK__Comentari__idUsu__412EB0B6">
       <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Comentarios" EntitySet="Comentarios" />
     </AssociationSet>
-    <AssociationSet Name="FK__Preguntas__idCat__164452B1" Association="Self.FK__Preguntas__idCat__164452B1">
+    <AssociationSet Name="FK__Preguntas__idCat__3D5E1FD2" Association="Self.FK__Preguntas__idCat__3D5E1FD2">
       <End Role="Categorias" EntitySet="Categorias" />
       <End Role="Preguntas" EntitySet="Preguntas" />
     </AssociationSet>
-    <AssociationSet Name="FK__Preguntas__idUsu__173876EA" Association="Self.FK__Preguntas__idUsu__173876EA">
+    <AssociationSet Name="FK__Preguntas__idUsu__3E52440B" Association="Self.FK__Preguntas__idUsu__3E52440B">
       <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Preguntas" EntitySet="Preguntas" />
     </AssociationSet>

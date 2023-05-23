@@ -27,9 +27,10 @@ namespace Foro.Controllers
         {
             List<Preguntas> preguntas = new PreguntasController().ListarPreguntas();
             
-            preguntas = preguntas.Where(x => !x.idCategoria.Equals(idCategoria)).ToList();
-            
+            preguntas = preguntas.Where(x => x.idCategoria == idCategoria).ToList();
+
             return View("VerCategoria", new Tuple<List<Preguntas>, string>(preguntas, categoria));
+            //return View("~/Views/Categoria/VerCategoria.cshtml", new Tuple<List<Preguntas>, string>(preguntas, categoria));
         }
     }
 }

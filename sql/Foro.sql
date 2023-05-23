@@ -26,7 +26,7 @@ CREATE TABLE Categorias(
 CREATE TABLE Preguntas(
 
 	idPregunta SMALLINT PRIMARY KEY IDENTITY,
-	titulo VARCHAR(100) NOT NULL,
+	titulo VARCHAR(100) NOT NULL UNIQUE,
 	descripcion VARCHAR(1000) NOT NULL,	
 	fechaPublicacion DATETIME NOT NULL,
 	idCategoria TINYINT FOREIGN KEY REFERENCES Categorias(idCategoria) NOT NULL,

@@ -29,9 +29,50 @@ namespace Foro.Controllers
             return preguntas;
         }
 
-        public ActionResult VerPregunta()
+        public ActionResult VerPregunta(int idPregunta)
         {
-            return View();
+            Preguntas pregunta = bd.Preguntas.FirstOrDefault(x => x.idPregunta == idPregunta);
+
+            return View(pregunta);
+        }
+
+        public ActionResult AñadirPregunta()
+        {
+            if (Session["usuario"] == null)
+            {                
+                return View("~/Views/Login/InicioSesion.cshtml");
+            }
+            else
+            {
+                return View("AñadirPregunta");
+            }            
+        }
+
+        [HttpPost]
+        public ActionResult AñadirPregunta(string titulo, int idCategoria, string descripcion)
+        {
+            Categorias categoria = bd.Categorias.FirstOrDefault(x => x.idCategoria == idCategoria);            
+
+            Preguntas pregunta = new Preguntas();                                  
+
+            int idUsu = ((Usuarios)Session["usuario"]).idUsuario;
+
+            pregunta.titulo = titulo;
+            pregunta.descripcion = descripcion;
+            pregunta.fechaPublicacion = DateTime.Now;
+            pregunta.idCategoria = (byte)idCategoria;
+            pregunta.idUsuario = (byte)idUsu;
+            
+            bd.Preguntas.Add(pregunta);
+            bd.SaveChanges();
+
+            return RedirectToAction("VerPregunta", new {idPregunta = pregunta.idPregunta});
+            //Tuple<List<Preguntas>, string> datos = new CategoriaController().VerCategoria(idCategoria, categoria.nombre.ToString());
+
+            //return View("~/Views/Home/VistaInicio.cshtml");
+            //return View("~/Views/Categoria/VerCategoria.cshtml", datos);
+            //return View(new CategoriaController().VerCategoria(idCategoria, cat.nombre.ToString()));
+            // return View("~/Views/Categoria/VerCategoria.cshtml",new CategoriaController().VerCategoria(idCategoria, cat.nombre.ToString()));
         }
     }
 }

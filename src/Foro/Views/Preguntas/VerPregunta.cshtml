@@ -1,14 +1,57 @@
-﻿<div id="divVerPregunta">
+﻿@using Foro.Controllers
+@using Foro.Models
+
+@{ 
+
+    Preguntas pregunta = Model;
+
+}
+
+<div id="divVerPregunta">
     <div id="contenedorPreguntas">
-        <div id="tituloPregunta">Es Alex vegano?</div>
+        <div id="tituloPregunta">@pregunta.titulo</div>
+        <div class="respuestasPregunta">
+            @pregunta.descripcion
+        </div>
         <div class="respuestasPregunta">
             @*<img src="~/Content/img/"
-        *@</div>
+            *@
+        </div>
+        <div class="respuestasPregunta">
+            @*<img src="~/Content/img/"
+            *@
+        </div>
+        <div class="respuestasPregunta">
+            @*<img src="~/Content/img/"
+            *@
+        </div>
+        <div class="respuestasPregunta">
+            @*<img src="~/Content/img/"
+            *@
+        </div>
+        <div class="respuestasPregunta">
+            @*<img src="~/Content/img/"
+            *@
+        </div>
     </div>
     <div class="otrasCategorias">
-        
+
     </div>
 </div>
+
+<!--<div class="respuestasPregunta">-->
+    @*<img src="~/Content/img/"
+    *@
+<!--</div>
+<div class="respuestasPregunta">-->
+    @*<img src="~/Content/img/"
+    *@
+<!--</div>
+<div class="respuestasPregunta">-->
+    @*<img src="~/Content/img/"
+    *@
+<!--</div>-->
+
 
 
 
