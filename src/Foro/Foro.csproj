@@ -195,6 +195,7 @@
     <Content Include="Content\img\mensaje.svg" />
     <Content Include="Content\img\musica.svg" />
     <Content Include="Content\img\pelicula.svg" />
+    <Content Include="Content\img\sinimg.png" />
     <Content Include="Content\img\videojuegos.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -215,7 +216,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\img\noimg.avif" />
     <EntityDeploy Include="Models\Foro.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Foro.Designer.cs</LastGenOutput>

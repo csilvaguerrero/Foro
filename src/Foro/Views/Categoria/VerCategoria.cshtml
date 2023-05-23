@@ -23,29 +23,38 @@
         <span>HILOS</span>
     </div>
     <div id="contenedorCategoria">
-        @foreach (var hilos in pregunta)
+        @if (pregunta.Count > 0)
         {
-            <div class="filasPreguntas">
-                <img src="~/Content/img/mensaje.svg" />
-                <div id="contenidoHilo">
-                    <a href="@Url.Action("VerPregunta", "Preguntas", new {idPregunta = hilos.idPregunta})" class="enlacePregunta">@hilos.titulo</a>
-                    <br />
-                    <span id="usuarioHilo">
-                        @simbolo@hilos.Usuarios.usuario - Publicado el @hilos.fechaPublicacion.ToString("yyyy/MM/dd")
-                    </span>
-                </div>
-                <div id="numeroComentarios">
-                    @if (hilos.Comentarios.Count > 0)
-                    {
-                        @hilos.Comentarios.Count <span>respuestas</span>
-                    }
-                    else
-                    {
-                        <span>No hay respuestas</span>
-                    }
 
+
+            foreach (var hilos in pregunta)
+            {
+                <div class="filasPreguntas">
+                    <img src="~/Content/img/mensaje.svg" />
+                    <div id="contenidoHilo">
+                        <a href="@Url.Action("VerPregunta", "Preguntas", new { idPregunta = hilos.idPregunta })" class="enlacePregunta">@hilos.titulo</a>
+                        <br />
+                        <span id="usuarioHilo">
+                            @simbolo@hilos.Usuarios.usuario - Publicado el @hilos.fechaPublicacion.ToString("yyyy/MM/dd")
+                        </span>
+                    </div>
+                    <div id="numeroComentarios">
+                        @if (hilos.Comentarios.Count > 0)
+                        {
+                            @hilos.Comentarios.Count <span>respuestas</span>
+                        }
+                        else
+                        {
+                            <span>No hay respuestas</span>
+                        }
+
+                    </div>
                 </div>
-            </div>
+            }
+        }
+        else
+        {
+            <h2>No hay hilos creados.</h2>
         }
     </div>
 </div>

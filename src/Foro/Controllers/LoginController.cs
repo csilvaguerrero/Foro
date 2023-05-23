@@ -21,9 +21,14 @@ namespace Foro.Controllers
         }
 
         [HttpPost]
-        public ActionResult IniciarSesion(string usuario, string contrasenia)
+        public ActionResult IniciarSesion(string usuario, string contrasenia, string ruta)
         {
             Usuarios usu = bd.Usuarios.FirstOrDefault(x => x.usuario == usuario);
+
+            if (ruta == "")
+            {
+                ruta = null;
+            }
 
             if (usu != null)
             {
@@ -32,7 +37,14 @@ namespace Foro.Controllers
                     Session.Add("usuario", usu);
                     usu = null;
 
-                    return View("~/Views/Home/VistaInicio.cshtml");
+                    if (ruta != null)
+                    {
+                        return View(ruta);
+                    }
+                    else
+                    {
+                        return View("~/Views/Home/VistaInicio.cshtml");
+                    }                    
                 }
                 else
                 {
@@ -65,7 +77,7 @@ namespace Foro.Controllers
             bd.Usuarios.Add(user);
             bd.SaveChanges();
 
-            return IniciarSesion(user.usuario, contrasenia);
+            return IniciarSesion(user.usuario, contrasenia, null);
         }
         
         public ActionResult CerrarSesion()

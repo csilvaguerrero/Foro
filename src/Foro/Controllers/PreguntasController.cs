@@ -40,6 +40,7 @@ namespace Foro.Controllers
         {
             if (Session["usuario"] == null)
             {                
+                ViewBag.ruta = "~/Views/Preguntas/AñadirPregunta.cshtml";
                 return View("~/Views/Login/InicioSesion.cshtml");
             }
             else

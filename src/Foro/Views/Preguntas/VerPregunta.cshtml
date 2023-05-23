@@ -1,9 +1,11 @@
 ﻿@using Foro.Controllers
 @using Foro.Models
 
-@{ 
+@{
 
     Preguntas pregunta = Model;
+    string simbolo = "@";
+
 
 }
 
@@ -11,47 +13,28 @@
     <div id="contenedorPreguntas">
         <div id="tituloPregunta">@pregunta.titulo</div>
         <div class="respuestasPregunta">
-            @pregunta.descripcion
+            <div>
+                <img src="~/Content/img/sinimg.png" class="sinImg" />
+                <div class="divInformacionRespuesta">@simbolo@pregunta.Usuarios.usuario</div>
+                <br /><br />
+                <div class="fechaPublicacionRespuesta">Publicado el @Convert.ToDateTime(pregunta.fechaPublicacion).ToString("yyyy/MM/dd")</div>
+            </div>           
+            <div class="bordeRespuesta">
+                <div class="descripcionRespuesta">@pregunta.descripcion</div>
+            </div>
         </div>
         <div class="respuestasPregunta">
-            @*<img src="~/Content/img/"
-            *@
+            <div>
+                <img src="~/Content/img/sinimg.png" class="sinImg" />
+                <div class="divInformacionRespuesta">@simbolo@pregunta.Usuarios.usuario</div>
+                <br /><br />
+                <div class="fechaPublicacionRespuesta">Publicado el @Convert.ToDateTime(pregunta.fechaPublicacion).ToString("yyyy/MM/dd")</div>
+            </div>
+            @*SEGUIR SQUI*@
         </div>
-        <div class="respuestasPregunta">
-            @*<img src="~/Content/img/"
-            *@
-        </div>
-        <div class="respuestasPregunta">
-            @*<img src="~/Content/img/"
-            *@
-        </div>
-        <div class="respuestasPregunta">
-            @*<img src="~/Content/img/"
-            *@
-        </div>
-        <div class="respuestasPregunta">
-            @*<img src="~/Content/img/"
-            *@
-        </div>
+        
     </div>
     <div class="otrasCategorias">
 
     </div>
 </div>
-
-<!--<div class="respuestasPregunta">-->
-    @*<img src="~/Content/img/"
-    *@
-<!--</div>
-<div class="respuestasPregunta">-->
-    @*<img src="~/Content/img/"
-    *@
-<!--</div>
-<div class="respuestasPregunta">-->
-    @*<img src="~/Content/img/"
-    *@
-<!--</div>-->
-
-
-
-
