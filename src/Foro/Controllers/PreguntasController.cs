@@ -75,5 +75,12 @@ namespace Foro.Controllers
             //return View(new CategoriaController().VerCategoria(idCategoria, cat.nombre.ToString()));
             // return View("~/Views/Categoria/VerCategoria.cshtml",new CategoriaController().VerCategoria(idCategoria, cat.nombre.ToString()));
         }
+
+        public List<Preguntas> HilosMasRespondidos()
+        {
+            List<Preguntas> preguntas = bd.Preguntas.OrderBy(x => x.Comentarios.Count).ToList();
+
+            return preguntas;
+        }
     }
 }

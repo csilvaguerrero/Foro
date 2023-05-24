@@ -2,37 +2,82 @@
 @using Foro.Models
 
 @{
-
     Preguntas pregunta = Model;
     string simbolo = "@";
-
-
 }
 
 <div id="divVerPregunta">
     <div id="contenedorPreguntas">
-        <div id="tituloPregunta">@pregunta.titulo</div>
+        <div id="tituloPregunta">
+            @pregunta.titulo
+            <a onclick="mostrarFormResponderHilo()" class="botonAñadirPregunta" id="añadirRespuesta">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+            </a>
+        </div>
         <div class="respuestasPregunta">
             <div>
                 <img src="~/Content/img/sinimg.png" class="sinImg" />
                 <div class="divInformacionRespuesta">@simbolo@pregunta.Usuarios.usuario</div>
                 <br /><br />
                 <div class="fechaPublicacionRespuesta">Publicado el @Convert.ToDateTime(pregunta.fechaPublicacion).ToString("yyyy/MM/dd")</div>
-            </div>           
+            </div>
             <div class="bordeRespuesta">
                 <div class="descripcionRespuesta">@pregunta.descripcion</div>
             </div>
-        </div>
-        <div class="respuestasPregunta">
-            <div>
-                <img src="~/Content/img/sinimg.png" class="sinImg" />
-                <div class="divInformacionRespuesta">@simbolo@pregunta.Usuarios.usuario</div>
-                <br /><br />
-                <div class="fechaPublicacionRespuesta">Publicado el @Convert.ToDateTime(pregunta.fechaPublicacion).ToString("yyyy/MM/dd")</div>
+            <div class="responderPregunta">
+                <span class="material-symbols-outlined" onclick="mostrarFormResponderHilo()">
+                    subdirectory_arrow_left
+                </span>
             </div>
-            @*SEGUIR SQUI*@
         </div>
-        
+        <div id="cajaRespuesta" class="respuestasPregunta">
+            <div class="bordeRespuesta">
+                @using (Html.BeginForm("CrearComentario", "Comentario", FormMethod.Post, htmlAttributes: new { id = "formularioResponder" }))
+                {
+                    <input type="hidden" name="idUsuario" />
+                    <input type="hidden" name="idCategoria" />AQUI
+
+                    <textarea id="textoRespuestaRespuesta" placeholder="Escribe aquí..." name="descripcion"></textarea>
+                    <div id="opcionesRespuesta">
+                        <a class="close-button" onclick="cerrarFormulario()">X</a>
+                        <input type="submit" id="responderHilo" value="Responder" />
+                    </div>
+                }
+            </div>
+        </div>
+
+        @foreach (var respuestas in pregunta.Comentarios)
+        {
+            <div class="respuestasPregunta">
+                <div>
+                    <img src="~/Content/img/sinimg.png" class="sinImg" />
+                    <div class="divInformacionRespuesta">@simbolo@respuestas.Usuarios.usuario</div>
+                    <br /><br />
+                    <div class="fechaPublicacionRespuesta">Publicado el @Convert.ToDateTime(respuestas.fechaPublicacion).ToString("yyyy/MM/dd")</div>
+                </div>
+                <div class="descripcionRespuesta">@respuestas.descripcion</div>
+                <div class="responderPregunta">
+                    <span class="material-symbols-outlined">
+                        subdirectory_arrow_left
+                    </span>
+                </div>
+            </div>
+            <div id="cajaRespuesta" class="respuestasPregunta">
+                <div class="bordeRespuesta">
+                    @using (Html.BeginForm("CrearComentario", "Comentario", FormMethod.Post, htmlAttributes: new { id = "formularioResponder" }))
+                    {
+                        <textarea id="textoRespuestaRespuesta" placeholder="Escribe aquí..." name="descripcion"></textarea>
+                        <div id="opcionesRespuesta">
+                            <button class="close-button" onclick="cerrarFormulario()">X</button>
+                            <input type="submit" id="responderHilo" value="Responder" />
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
     </div>
     <div class="otrasCategorias">
 

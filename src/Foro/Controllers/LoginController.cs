@@ -23,7 +23,7 @@ namespace Foro.Controllers
         [HttpPost]
         public ActionResult IniciarSesion(string usuario, string contrasenia, string ruta)
         {
-            Usuarios usu = bd.Usuarios.FirstOrDefault(x => x.usuario == usuario);
+            Usuarios usu = bd.Usuarios.FirstOrDefault(x => x.usuario == usuario);            
 
             if (ruta == "")
             {
@@ -44,15 +44,18 @@ namespace Foro.Controllers
                     else
                     {
                         return View("~/Views/Home/VistaInicio.cshtml");
-                    }                    
+                    }
+                    TempData["estado"] = false;
                 }
                 else
                 {
-                    return RedirectToAction("Index");
+                    TempData["estado"] = true;
+                    return View("InicioSesion");
                 }                
             }
             else
             {
+                TempData["estado"] = true;
                 return View("InicioSesion");
             }             
         }

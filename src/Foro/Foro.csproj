@@ -197,6 +197,7 @@
     <Content Include="Content\img\pelicula.svg" />
     <Content Include="Content\img\sinimg.png" />
     <Content Include="Content\img\videojuegos.svg" />
+    <Content Include="Content\js\pregunta.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

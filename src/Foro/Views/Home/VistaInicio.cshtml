@@ -1,4 +1,11 @@
-﻿@using Foro.Controllers;
+﻿@using Foro.Models 
+
+@{ 
+    List<Preguntas> hilosMasRespondidos = new PreguntasController().HilosMasRespondidos();
+    int contador = 0;
+}
+
+@using Foro.Controllers;
 
 <div id="divCategorias">
     <div id="todasCategorias">
@@ -21,5 +28,27 @@
             </a>
             <hr />
         }
-    </div>
+    </div>    
+    <div class="otrasCategorias">
+        <h3 id="hilosRespondidos">Hilos más respondidos</h3>
+        @foreach (var masRespondidos in hilosMasRespondidos)
+        {
+            if (contador == 5)
+            {
+                break;
+            }
+            <div class="filasMasRespodidos">
+                <span class="tituloNombrePregunta">
+                    @masRespondidos.titulo
+                </span>
+                <div class="contenidoAdicional">
+                    <span>@masRespondidos.Comentarios.Count respuestas</span>
+                    <a class="enlaceVerHilo" href="@Url.Action("VerPregunta", "Preguntas", new {idPregunta = masRespondidos.idPregunta})">Ver Hilo >></a>
+                </div>
+            </div>
+            <br />
+            contador++;
+        }       
+        <a id="btnVerMasHilos">VER MAS</a>
+    </div>      
 </div>

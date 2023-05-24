@@ -21,5 +21,17 @@ namespace Foro.Controllers
 
             return comentarios;
         }
+
+        [HttpPost]
+        public ActionResult CrearComentario(string descripcion)
+        {
+            Comentarios comentario = new Comentarios();
+
+            comentario.descripcion = descripcion;
+            comentario.fechaPublicacion = DateTime.Now;
+            comentario.idPregunta
+
+            return View();
+        }
     }
 }
