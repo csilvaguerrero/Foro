@@ -346,11 +346,12 @@ div#encabezadoVerCategorias {
     background-color: #2c2a2a;
     width: 1400px;
     color: white;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-    div#encabezadoVerCategorias > span {
-        display: inline-block;
-        line-height: 40px; 
+    div#encabezadoVerCategorias > div {                    
         padding-left: 50px;        
         font-weight: bold;
     }
@@ -852,3 +853,12 @@ div#mediaUsuarios {
     text-align: center;
     font-size: 25px;
 }
+
+div#filtroPreguntas{
+   margin-left: auto;
+   margin-right: 53px;   
+}
+
+    div#filtroPreguntas > span {
+        font-size: 35px;
+    }
