@@ -1,13 +1,20 @@
-﻿@using Foro.Models 
-
-@{ 
-    List<Preguntas> hilosMasRespondidos = new PreguntasController().HilosMasRespondidos();
-    int contador = 0;
-}
-
+﻿@using Foro.Models
 @using Foro.Controllers;
 
-<div id="divCategorias">
+@{
+    List<Preguntas> hilosMasRespondidos = new PreguntasController().HilosMasRespondidos();
+
+    int contador = 0;
+    string rango = "";
+
+    if (Session["usuario"] != null)
+    {
+        int idUsuario = ((Usuarios)Session["usuario"]).idUsuario;
+        rango = new UsuarioController().GetRango(idUsuario);
+    }
+}
+
+<div id="divCategorias" onloadedmetadata="cargarBarra()">
     <div id="todasCategorias">
         <h2>Categorías</h2>
         <br />
@@ -28,27 +35,44 @@
             </a>
             <hr />
         }
-    </div>    
+    </div>
     <div class="otrasCategorias">
-        <h3 id="hilosRespondidos">Hilos más respondidos</h3>
-        @foreach (var masRespondidos in hilosMasRespondidos)
-        {
-            if (contador == 5)
+        <div id="preguntasDestacadas">
+            <h3 id="hilosRespondidos">Hilos más respondidos</h3>
+            @foreach (var masRespondidos in hilosMasRespondidos)
             {
-                break;
-            }
-            <div class="filasMasRespodidos">
-                <span class="tituloNombrePregunta">
-                    @masRespondidos.titulo
-                </span>
-                <div class="contenidoAdicional">
-                    <span>@masRespondidos.Comentarios.Count respuestas</span>
-                    <a class="enlaceVerHilo" href="@Url.Action("VerPregunta", "Preguntas", new {idPregunta = masRespondidos.idPregunta})">Ver Hilo >></a>
+                if (contador == 5)
+                {
+                    break;
+                }
+                <div class="filasMasRespodidos">
+                    <span class="tituloNombrePregunta">
+                        @masRespondidos.titulo
+                    </span>
+                    <div class="contenidoAdicional">
+                        <span>@masRespondidos.Comentarios.Count respuestas</span>
+                        <a class="enlaceVerHilo" href="@Url.Action("VerPregunta", "Preguntas", new {idPregunta = masRespondidos.idPregunta})">Ver Hilo >></a>
+                    </div>
                 </div>
-            </div>
-            <br />
-            contador++;
-        }       
-        <a id="btnVerMasHilos">VER MAS</a>
-    </div>      
+                <br />
+                contador++;
+            }
+            <a id="btnVerMasHilos">VER MAS</a>
+        </div>
+        <div id="estadoRol">
+            <h3>Tu progreso</h3>
+            @if (Session["usuario"] == null)
+            {
+                <span>Inicia sesión para ver tu progreso</span>
+            }
+            else
+            {
+                <div>
+                    Actualmente eres: <span>@rango</span>                    
+                </div>
+            }
+        </div>
+    </div>
 </div>
+
+

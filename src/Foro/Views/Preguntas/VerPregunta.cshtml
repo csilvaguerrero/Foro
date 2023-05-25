@@ -4,17 +4,30 @@
 @{
     Preguntas pregunta = Model;
     string simbolo = "@";
+    int? idUser;
+
+    if (Session["usuario"] != null)
+    {
+        idUser = ((Usuarios)Session["usuario"]).idUsuario;
+    }
+    else
+    {
+        idUser = null;
+    }
 }
 
 <div id="divVerPregunta">
     <div id="contenedorPreguntas">
         <div id="tituloPregunta">
             @pregunta.titulo
-            <a onclick="mostrarFormResponderHilo()" class="botonAñadirPregunta" id="añadirRespuesta">
-                <span class="material-symbols-outlined">
-                    add
-                </span>
-            </a>
+            @if (Session["usuario"] != null)
+            {
+                <a onclick="mostrarFormResponderHilo()" class="botonAñadirPregunta" id="añadirRespuesta">
+                    <span class="material-symbols-outlined">
+                        add
+                    </span>
+                </a>
+            }
         </div>
         <div class="respuestasPregunta">
             <div>
@@ -26,27 +39,34 @@
             <div class="bordeRespuesta">
                 <div class="descripcionRespuesta">@pregunta.descripcion</div>
             </div>
-            <div class="responderPregunta">
-                <span class="material-symbols-outlined" onclick="mostrarFormResponderHilo()">
-                    subdirectory_arrow_left
-                </span>
-            </div>
-        </div>
-        <div id="cajaRespuesta" class="respuestasPregunta">
-            <div class="bordeRespuesta">
-                @using (Html.BeginForm("CrearComentario", "Comentario", FormMethod.Post, htmlAttributes: new { id = "formularioResponder" }))
-                {
-                    <input type="hidden" name="idUsuario" />
-                    <input type="hidden" name="idCategoria" />AQUI
+            @if (Session["usuario"] != null)
+            {
+                <div class="responderPregunta">
+                    <span class="material-symbols-outlined" onclick="mostrarFormResponderHilo()">
+                        subdirectory_arrow_left
+                    </span>
+                </div>
+            }
 
-                    <textarea id="textoRespuestaRespuesta" placeholder="Escribe aquí..." name="descripcion"></textarea>
-                    <div id="opcionesRespuesta">
-                        <a class="close-button" onclick="cerrarFormulario()">X</a>
-                        <input type="submit" id="responderHilo" value="Responder" />
-                    </div>
-                }
-            </div>
         </div>
+        @if (pregunta.Comentarios.Count == 0)
+        {
+            <div id="cajaRespuesta" class="respuestasPregunta">
+                <div class="bordeRespuesta">
+                    @using (Html.BeginForm("CrearComentario", "Comentario", FormMethod.Post, htmlAttributes: new { @class = "formularioResponder" }))
+                    {
+                        <input type="hidden" name="idUsuario" value="@idUser" />
+                        <input type="hidden" name="idPregunta" value="@pregunta.idPregunta" />
+
+                        <textarea id="textoRespuestaRespuesta" placeholder="Escribe aquí..." name="descripcion"></textarea>
+                        <div id="opcionesRespuesta">
+                            <a class="close-button" onclick="cerrarFormulario()">X</a>
+                            <input type="submit" id="responderHilo" value="Responder" />
+                        </div>
+                    }
+                </div>
+            </div>
+        }
 
         @foreach (var respuestas in pregunta.Comentarios)
         {
@@ -58,19 +78,25 @@
                     <div class="fechaPublicacionRespuesta">Publicado el @Convert.ToDateTime(respuestas.fechaPublicacion).ToString("yyyy/MM/dd")</div>
                 </div>
                 <div class="descripcionRespuesta">@respuestas.descripcion</div>
-                <div class="responderPregunta">
-                    <span class="material-symbols-outlined">
-                        subdirectory_arrow_left
-                    </span>
-                </div>
+                @if (Session["usuario"] != null)
+                {
+                    <div class="responderPregunta">
+                        <span class="material-symbols-outlined" onclick="mostrarFormResponderHilo()">
+                            subdirectory_arrow_left
+                        </span>
+                    </div>
+                }
             </div>
             <div id="cajaRespuesta" class="respuestasPregunta">
                 <div class="bordeRespuesta">
-                    @using (Html.BeginForm("CrearComentario", "Comentario", FormMethod.Post, htmlAttributes: new { id = "formularioResponder" }))
+                    @using (Html.BeginForm("CrearComentario", "Comentario", FormMethod.Post, htmlAttributes: new { @class = "formularioResponder" }))
                     {
+                        <input type="hidden" name="idUsuario" value="@idUser" />
+                        <input type="hidden" name="idPregunta" value="@pregunta.idPregunta" />
+
                         <textarea id="textoRespuestaRespuesta" placeholder="Escribe aquí..." name="descripcion"></textarea>
                         <div id="opcionesRespuesta">
-                            <button class="close-button" onclick="cerrarFormulario()">X</button>
+                            <a class="close-button" onclick="cerrarFormulario()">X</a>
                             <input type="submit" id="responderHilo" value="Responder" />
                         </div>
                     }

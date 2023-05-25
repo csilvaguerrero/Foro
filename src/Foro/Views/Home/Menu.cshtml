@@ -11,6 +11,7 @@
 
     <!--Scripts JS-->
     <script src="~/Content/js/pregunta.js"></script>
+    <script src="~/Content/js/progreso_rango.js"></script>
 
 </head>
 <body>
@@ -27,16 +28,26 @@
             }
             else
             {
+                <a>
+                    <span onclick="mostrarNotificaciones()" class="material-symbols-outlined" id="iconoNotificaciones" >
+                        notifications
+                    </span>
+                </a>
+                <div id="divNotificaciones">asd</div>
+                <a href="@Url.Action("MiPerfil", "Usuario")"><span class="material-symbols-outlined" id="iconoPerfil">person</span></a>
                 <a href="@Url.Action("CerrarSesion", "Login")"><span class="spans material-symbols-outlined" id="cerrarSesion">logout</span></a>
-                <a><span class="material-symbols-outlined" id="iconoPerfil">person</span></a>
             }
 
-        </div>
+        </div>        
     </nav>
     <div id="separadorNav">
         @if (Session["usuario"] != null)
         {
             <div id="saludoUsuario">Hola, @(((Usuarios)Session["usuario"]).usuario)</div>
+        }
+        else
+        {
+            <div id="mensajeIniciarSesion">Inicia sesión para participar en nuestra comunidad</div>
         }
     </div>
 

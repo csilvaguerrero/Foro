@@ -76,6 +76,7 @@ namespace Foro.Controllers
             user.usuario = usuario;
             user.fechaRegistro = DateTime.Now;
             user.contrasenia = Encriptar(contrasenia);
+            user.rol = "b";
 
             bd.Usuarios.Add(user);
             bd.SaveChanges();

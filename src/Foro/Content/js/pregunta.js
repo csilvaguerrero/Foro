@@ -5,3 +5,4 @@
 function cerrarFormulario() {
     $('#cajaRespuesta').fadeOut(200)
 }
+

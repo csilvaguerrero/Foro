@@ -8,7 +8,7 @@
     <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Preguntas" Relationship="Self.FK__Preguntas__idCat__173876EA" FromRole="Categorias" ToRole="Preguntas" />
+    <NavigationProperty Name="Preguntas" Relationship="Self.FK__Preguntas__idCat__3F466844" FromRole="Categorias" ToRole="Preguntas" />
   </EntityType>
   <EntityType Name="Comentarios">
     <Key>
@@ -19,8 +19,8 @@
     <Property Name="fechaPublicacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="idUsuario" Type="Byte" Nullable="false" />
     <Property Name="idPregunta" Type="Int16" Nullable="false" />
-    <NavigationProperty Name="Preguntas" Relationship="Self.FK__Comentari__idPre__1BFD2C07" FromRole="Comentarios" ToRole="Preguntas" />
-    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Comentari__idUsu__1B0907CE" FromRole="Comentarios" ToRole="Usuarios" />
+    <NavigationProperty Name="Preguntas" Relationship="Self.FK__Comentari__idPre__440B1D61" FromRole="Comentarios" ToRole="Preguntas" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Comentari__idUsu__4316F928" FromRole="Comentarios" ToRole="Usuarios" />
   </EntityType>
   <EntityType Name="Preguntas">
     <Key>
@@ -32,9 +32,9 @@
     <Property Name="fechaPublicacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="idCategoria" Type="Byte" Nullable="false" />
     <Property Name="idUsuario" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Categorias" Relationship="Self.FK__Preguntas__idCat__173876EA" FromRole="Preguntas" ToRole="Categorias" />
-    <NavigationProperty Name="Comentarios" Relationship="Self.FK__Comentari__idPre__1BFD2C07" FromRole="Preguntas" ToRole="Comentarios" />
-    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Preguntas__idUsu__182C9B23" FromRole="Preguntas" ToRole="Usuarios" />
+    <NavigationProperty Name="Categorias" Relationship="Self.FK__Preguntas__idCat__3F466844" FromRole="Preguntas" ToRole="Categorias" />
+    <NavigationProperty Name="Comentarios" Relationship="Self.FK__Comentari__idPre__440B1D61" FromRole="Preguntas" ToRole="Comentarios" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Preguntas__idUsu__403A8C7D" FromRole="Preguntas" ToRole="Usuarios" />
   </EntityType>
   <EntityType Name="Usuarios">
     <Key>
@@ -47,10 +47,11 @@
     <Property Name="usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="contrasenia" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Comentarios" Relationship="Self.FK__Comentari__idUsu__1B0907CE" FromRole="Usuarios" ToRole="Comentarios" />
-    <NavigationProperty Name="Preguntas" Relationship="Self.FK__Preguntas__idUsu__182C9B23" FromRole="Usuarios" ToRole="Preguntas" />
+    <Property Name="rol" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Comentarios" Relationship="Self.FK__Comentari__idUsu__4316F928" FromRole="Usuarios" ToRole="Comentarios" />
+    <NavigationProperty Name="Preguntas" Relationship="Self.FK__Preguntas__idUsu__403A8C7D" FromRole="Usuarios" ToRole="Preguntas" />
   </EntityType>
-  <Association Name="FK__Preguntas__idCat__173876EA">
+  <Association Name="FK__Preguntas__idCat__3F466844">
     <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
     <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -62,7 +63,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Comentari__idPre__1BFD2C07">
+  <Association Name="FK__Comentari__idPre__440B1D61">
     <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
     <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
     <ReferentialConstraint>
@@ -74,7 +75,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Comentari__idUsu__1B0907CE">
+  <Association Name="FK__Comentari__idUsu__4316F928">
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
     <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
     <ReferentialConstraint>
@@ -86,7 +87,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Preguntas__idUsu__182C9B23">
+  <Association Name="FK__Preguntas__idUsu__403A8C7D">
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
     <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -103,19 +104,19 @@
     <EntitySet Name="Comentarios" EntityType="Self.Comentarios" />
     <EntitySet Name="Preguntas" EntityType="Self.Preguntas" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
-    <AssociationSet Name="FK__Preguntas__idCat__173876EA" Association="Self.FK__Preguntas__idCat__173876EA">
+    <AssociationSet Name="FK__Preguntas__idCat__3F466844" Association="Self.FK__Preguntas__idCat__3F466844">
       <End Role="Categorias" EntitySet="Categorias" />
       <End Role="Preguntas" EntitySet="Preguntas" />
     </AssociationSet>
-    <AssociationSet Name="FK__Comentari__idPre__1BFD2C07" Association="Self.FK__Comentari__idPre__1BFD2C07">
+    <AssociationSet Name="FK__Comentari__idPre__440B1D61" Association="Self.FK__Comentari__idPre__440B1D61">
       <End Role="Preguntas" EntitySet="Preguntas" />
       <End Role="Comentarios" EntitySet="Comentarios" />
     </AssociationSet>
-    <AssociationSet Name="FK__Comentari__idUsu__1B0907CE" Association="Self.FK__Comentari__idUsu__1B0907CE">
+    <AssociationSet Name="FK__Comentari__idUsu__4316F928" Association="Self.FK__Comentari__idUsu__4316F928">
       <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Comentarios" EntitySet="Comentarios" />
     </AssociationSet>
-    <AssociationSet Name="FK__Preguntas__idUsu__182C9B23" Association="Self.FK__Preguntas__idUsu__182C9B23">
+    <AssociationSet Name="FK__Preguntas__idUsu__403A8C7D" Association="Self.FK__Preguntas__idUsu__403A8C7D">
       <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Preguntas" EntitySet="Preguntas" />
     </AssociationSet>

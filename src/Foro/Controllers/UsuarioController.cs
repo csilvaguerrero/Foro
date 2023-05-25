@@ -21,5 +21,37 @@ namespace Foro.Controllers
 
             return usuario;
         }
+
+        public ActionResult MiPerfil()
+        {
+            return View();
+        }
+
+        public string GetRango(int idUsuario)
+        {
+            Usuarios usu = db.Usuarios.FirstOrDefault(x => x.idUsuario == idUsuario);
+            string rol = "";
+
+            switch (usu.rol)
+            {
+                case "b":
+                    {
+                        rol = "BRONCE";
+                        break;
+                    }
+                case "p":
+                    {
+                        rol = "PLATA";
+                        break;
+                    }
+                case "o":
+                    {
+                        rol = "ORO";
+                        break;
+                    }
+            }
+
+            return rol;
+        }
     }
 }

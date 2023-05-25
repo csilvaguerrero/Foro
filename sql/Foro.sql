@@ -10,7 +10,8 @@ CREATE TABLE Usuarios(
 	correo VARCHAR(200) NOT NULL UNIQUE,
 	usuario VARCHAR(30) NOT NULL UNIQUE,
 	fechaRegistro DATETIME NOT NULL,
-	contrasenia VARCHAR(256) NOT NULL
+	contrasenia VARCHAR(256) NOT NULL,
+	rol CHAR(1) NOT NULL CHECK(rol = 'a' OR rol = 'b' OR rol = 'p' OR rol = 'o')
 
 );
 

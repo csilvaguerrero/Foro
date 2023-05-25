@@ -28,6 +28,7 @@ namespace Foro.Models
         public string usuario { get; set; }
         public System.DateTime fechaRegistro { get; set; }
         public string contrasenia { get; set; }
+        public string rol { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comentarios> Comentarios { get; set; }

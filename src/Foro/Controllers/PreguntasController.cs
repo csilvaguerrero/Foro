@@ -33,7 +33,7 @@ namespace Foro.Controllers
         {
             Preguntas pregunta = bd.Preguntas.FirstOrDefault(x => x.idPregunta == idPregunta);
 
-            return View(pregunta);
+            return View("~/Views/Preguntas/VerPregunta.cshtml", pregunta);
         }
 
         public ActionResult AñadirPregunta()
@@ -77,8 +77,9 @@ namespace Foro.Controllers
         }
 
         public List<Preguntas> HilosMasRespondidos()
-        {
-            List<Preguntas> preguntas = bd.Preguntas.OrderBy(x => x.Comentarios.Count).ToList();
+        {            
+            List<Preguntas> preguntas = bd.Preguntas.ToList();
+            preguntas.OrderBy(x => x.Comentarios.Count);
 
             return preguntas;
         }
