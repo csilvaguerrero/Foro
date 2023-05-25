@@ -67,19 +67,14 @@ namespace Foro.Controllers
             bd.Preguntas.Add(pregunta);
             bd.SaveChanges();
 
-            return RedirectToAction("VerPregunta", new {idPregunta = pregunta.idPregunta});
-            //Tuple<List<Preguntas>, string> datos = new CategoriaController().VerCategoria(idCategoria, categoria.nombre.ToString());
-
-            //return View("~/Views/Home/VistaInicio.cshtml");
-            //return View("~/Views/Categoria/VerCategoria.cshtml", datos);
-            //return View(new CategoriaController().VerCategoria(idCategoria, cat.nombre.ToString()));
-            // return View("~/Views/Categoria/VerCategoria.cshtml",new CategoriaController().VerCategoria(idCategoria, cat.nombre.ToString()));
+            return RedirectToAction("VerPregunta", new {idPregunta = pregunta.idPregunta});            
         }
 
         public List<Preguntas> HilosMasRespondidos()
         {            
             List<Preguntas> preguntas = bd.Preguntas.ToList();
-            preguntas.OrderBy(x => x.Comentarios.Count);
+
+            preguntas = preguntas.OrderByDescending(x => x.Comentarios.Count).ToList();
 
             return preguntas;
         }

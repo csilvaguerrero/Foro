@@ -1,10 +1,6 @@
-﻿
-//window.onload = cargarBarra()
-let sw = 0;
+﻿//window.onload = cargarBarra()
 
-function cargarBarra() {
-    console.log('asd')   
-}
+let sw = 0;
 
 function mostrarNotificaciones() {
     

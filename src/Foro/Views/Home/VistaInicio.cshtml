@@ -6,11 +6,13 @@
 
     int contador = 0;
     string rango = "";
+    double media = 0;
 
     if (Session["usuario"] != null)
     {
         int idUsuario = ((Usuarios)Session["usuario"]).idUsuario;
         rango = new UsuarioController().GetRango(idUsuario);
+        media = new UsuarioController().PorcentajeUsuarios(rango);
     }
 }
 
@@ -63,16 +65,69 @@
             <h3>Tu progreso</h3>
             @if (Session["usuario"] == null)
             {
-                <span>Inicia sesión para ver tu progreso</span>
+                <br /><br /><br /><br />
+                <div id="inicioSesionProgreso">Inicia sesión para ver tu progreso</div>
             }
             else
             {
                 <div>
-                    Actualmente eres: <span>@rango</span>                    
+                    <div id="contenedorProgress">
+                        <div id="barraProgreso"></div>
+                    </div>
+                    <div id="estadoProgreso"></div>
+                    <div id="mediaUsuarios">El @media% de los usuarios<br />están en tu rango</div>
+                    <br /><br /><br />
+                    Actualmente eres <span id="rangoUsuario">@rango</span>
                 </div>
             }
         </div>
     </div>
 </div>
+<script>
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("DevolverDato", "Usuario")',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                pintar(data)
+            }
+        });
 
+    function pintar(data) {
 
+        let div = document.getElementById("barraProgreso")
+        let estadoProgreso = document.getElementById("estadoProgreso")
+
+        if (data < 10) {
+            div.style.width = data * 10 + "%"
+        }
+        else if (data >= 10 && data < 30) {
+            div.style.width = data * 5 + "%"
+        }
+        else if (data >= 30 && data < 60) {
+            div.style.width = data * 2.5 + "%"
+        }
+
+        $.ajax({
+           type: "POST",
+            url: '@Url.Action("CambiarRol", "Usuario")',
+            data: { datos: data }
+        })
+
+        let span = document.getElementById('rangoUsuario')
+
+        if (data < 10) {
+            span.classList.add("bronce")
+            estadoProgreso.textContent = data+" de 10 puntos"
+        }
+        else if (data >= 10 && data < 30) {
+            span.classList.add("plata")
+            estadoProgreso.textContent = data+" de 20 puntos"
+        }
+        else if (data >= 30) {
+            span.classList.add("oro")
+            estadoProgreso.textContent = data+" de 30 puntos"
+        }
+    }
+</script>
