@@ -78,5 +78,15 @@ namespace Foro.Controllers
 
             return preguntas;
         }
+
+        public ActionResult BorrarPregunta(int idPregunta, string nombreCategoria)
+        {
+            Preguntas pregunta = bd.Preguntas.FirstOrDefault(x => x.idPregunta == idPregunta);            
+
+            bd.Preguntas.Remove(pregunta);
+            bd.SaveChanges();
+            
+            return new CategoriaController().VerCategoria(pregunta.idCategoria, nombreCategoria);
+        }
     }
 }

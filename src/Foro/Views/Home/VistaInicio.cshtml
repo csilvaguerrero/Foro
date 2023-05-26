@@ -41,25 +41,35 @@
     <div class="otrasCategorias">
         <div id="preguntasDestacadas">
             <h3 id="hilosRespondidos">Hilos más respondidos</h3>
-            @foreach (var masRespondidos in hilosMasRespondidos)
+            @if (hilosMasRespondidos.Count > 0)
             {
-                if (contador == 5)
+                foreach (var masRespondidos in hilosMasRespondidos)
                 {
-                    break;
-                }
-                <div class="filasMasRespodidos">
-                    <span class="tituloNombrePregunta">
-                        @masRespondidos.titulo
-                    </span>
-                    <div class="contenidoAdicional">
-                        <span>@masRespondidos.Comentarios.Count respuestas</span>
-                        <a class="enlaceVerHilo" href="@Url.Action("VerPregunta", "Preguntas", new {idPregunta = masRespondidos.idPregunta})">Ver Hilo >></a>
+                    if (contador == 5)
+                    {
+                        break;
+                    }
+                    <div class="filasMasRespodidos">
+                        <span class="tituloNombrePregunta">
+                            @masRespondidos.titulo
+                        </span>
+                        <div class="contenidoAdicional">
+                            <span>@masRespondidos.Comentarios.Count respuestas</span>
+                            <a class="enlaceVerHilo" href="@Url.Action("VerPregunta", "Preguntas", new {idPregunta = masRespondidos.idPregunta})">Ver Hilo >></a>
+                        </div>
                     </div>
-                </div>
-                <br />
-                contador++;
+                    <br />
+                    contador++;
+                }
+                <a id="btnVerMasHilos">VER MAS</a>
             }
-            <a id="btnVerMasHilos">VER MAS</a>
+            else
+            {
+                <div id="noHayHilos">NO HAY HILOS CREADOS</div>
+                <a id="btnVerMasHilos">CREAR HILO</a>
+            }
+
+
         </div>
         <div id="estadoRol">
             <h3>Tu progreso</h3>

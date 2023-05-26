@@ -17,8 +17,8 @@ namespace Foro.Models
         public short idComentario { get; set; }
         public string descripcion { get; set; }
         public System.DateTime fechaPublicacion { get; set; }
-        public byte idUsuario { get; set; }
-        public short idPregunta { get; set; }
+        public Nullable<byte> idUsuario { get; set; }
+        public Nullable<short> idPregunta { get; set; }
     
         public virtual Preguntas Preguntas { get; set; }
         public virtual Usuarios Usuarios { get; set; }

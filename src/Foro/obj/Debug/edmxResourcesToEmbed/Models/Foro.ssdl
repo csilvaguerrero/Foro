@@ -16,8 +16,8 @@
     <Property Name="idComentario" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="descripcion" Type="varchar" MaxLength="2000" Nullable="false" />
     <Property Name="fechaPublicacion" Type="datetime" Nullable="false" />
-    <Property Name="idUsuario" Type="tinyint" Nullable="false" />
-    <Property Name="idPregunta" Type="smallint" Nullable="false" />
+    <Property Name="idUsuario" Type="tinyint" />
+    <Property Name="idPregunta" Type="smallint" />
   </EntityType>
   <EntityType Name="Preguntas">
     <Key>
@@ -44,7 +44,9 @@
     <Property Name="rol" Type="char" MaxLength="1" Nullable="false" />
   </EntityType>
   <Association Name="FK__Comentari__idPre__440B1D61">
-    <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+    <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Preguntas">
@@ -56,7 +58,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Comentari__idUsu__4316F928">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">

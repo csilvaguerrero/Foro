@@ -36,7 +36,7 @@ namespace Foro.Controllers
             db.Comentarios.Add(comentario);
             db.SaveChanges();
             
-            return new PreguntasController().VerPregunta(comentario.idPregunta);            
+            return new PreguntasController().VerPregunta(Convert.ToInt16(comentario.idPregunta));            
         }
     }
 }

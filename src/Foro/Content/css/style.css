@@ -844,7 +844,7 @@ div#inicioSesionProgreso {
     text-align: center;
     border-radius: 10px;
     height: 40px;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 div#mediaUsuarios {
@@ -861,4 +861,34 @@ div#filtroPreguntas{
 
     div#filtroPreguntas > span {
         font-size: 35px;
+        cursor: pointer;
     }
+    div#filtroPreguntas > div{
+        position: absolute;
+        color: black;
+        background-color: gray;
+        width: 200px;
+        height: 400px;
+    }
+
+
+    div#iconoBorrar{
+        float: right;
+        color: red;
+        cursor: pointer;
+    }
+
+    div#iconoBorrar span{
+        color: red;
+    }
+
+div#noHayHilos {
+    background-color: #ededed;
+    font-weight: bold;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+}
