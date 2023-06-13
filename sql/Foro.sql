@@ -12,6 +12,7 @@ CREATE TABLE Usuarios(
 	fechaRegistro DATETIME NOT NULL,
 	contrasenia VARCHAR(256) NOT NULL,
 	rol CHAR(1) NOT NULL CHECK(rol = 'a' OR rol = 'b' OR rol = 'p' OR rol = 'o')
+	-- admin BIT NOT NULL
 
 );
 

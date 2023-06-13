@@ -22,13 +22,13 @@
     <div id="encabezadoVerCategorias">
         <div>
             <span>HILOS</span>
-        </div>        
+        </div>
         <div id="filtroPreguntas">
-            <span class="material-symbols-outlined">
+            <span class="material-symbols-outlined" onclick="mostrarFiltros()">
                 filter_list
             </span>
-            <div>asd</div>
-        </div>        
+            <div id="divFiltros">asd</div>
+        </div>
     </div>
     <div id="contenedorCategoria">
         @if (pregunta.Count > 0)
@@ -43,7 +43,7 @@
                         <span id="usuarioHilo">
                             @simbolo@hilos.Usuarios.usuario - Publicado el @hilos.fechaPublicacion.ToString("yyyy/MM/dd")
                         </span>
-                    </div>                    
+                    </div>
                     <div id="numeroComentarios">
                         <div id="iconoBorrar">
                             <a href="@Url.Action("BorrarPregunta", "Preguntas", new { idPregunta = hilos.idPregunta, nombreCategoria = nombreCategoria})">
@@ -71,3 +71,21 @@
         }
     </div>
 </div>
+
+<script>
+
+    let mostrarFiltro = false;
+
+    function mostrarFiltros() {        
+
+        debugger;
+        if (!mostrarFiltro) {
+            $('#divFiltros').fadeIn(200);
+            mostrarFiltro = true
+        }
+        else {
+            $('#divFiltros').hide()
+            mostrarFiltro = false
+        }
+    }
+</script>

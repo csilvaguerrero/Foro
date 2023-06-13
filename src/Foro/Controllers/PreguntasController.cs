@@ -36,7 +36,7 @@ namespace Foro.Controllers
             return View("~/Views/Preguntas/VerPregunta.cshtml", pregunta);
         }
 
-        public ActionResult AñadirPregunta()
+        public ActionResult AñadirPregunta(string nombreCategoria = null)
         {
             if (Session["usuario"] == null)
             {                
@@ -45,7 +45,9 @@ namespace Foro.Controllers
             }
             else
             {
-                return View("AñadirPregunta");
+                return View("AñadirPregunta", nombreCategoria);
+                //return View(nombreCategoria);
+                //return View();
             }            
         }
 
@@ -53,7 +55,6 @@ namespace Foro.Controllers
         public ActionResult AñadirPregunta(string titulo, int idCategoria, string descripcion)
         {
             Categorias categoria = bd.Categorias.FirstOrDefault(x => x.idCategoria == idCategoria);            
-
             Preguntas pregunta = new Preguntas();                                  
 
             int idUsu = ((Usuarios)Session["usuario"]).idUsuario;
@@ -83,9 +84,12 @@ namespace Foro.Controllers
         {
             Preguntas pregunta = bd.Preguntas.FirstOrDefault(x => x.idPregunta == idPregunta);            
 
-            bd.Preguntas.Remove(pregunta);
-            bd.SaveChanges();
-            
+            if (pregunta != null)
+            {
+                bd.Preguntas.Remove(pregunta);
+                bd.SaveChanges();
+            }
+                      
             return new CategoriaController().VerCategoria(pregunta.idCategoria, nombreCategoria);
         }
     }
